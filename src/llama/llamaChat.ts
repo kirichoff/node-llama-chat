@@ -7,6 +7,8 @@ import { error } from 'console'
 const systemPrompt: string =
   "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible. If a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information."
 
+const defaultModelPath = "Meta-Llama-3.1-8B-Instruct.Q8_0.gguf"
+
 export interface LlamaState {
   session: LlamaChatSession
   context: LlamaContext
@@ -15,13 +17,12 @@ export interface LlamaState {
 }
 
 export class LlamaChat {
-  state: Promise<LlamaState>
+  state: Promise<LlamaState> | null = null
 
-  constructor() {
-    this.state = this.innit()
-  }
+  constructor() {}
 
-  async initIPCHandlers() {
+  async innitLlama(modelPath?:string) {
+    this.state = this.innit(modelPath)
     this.promptHandler()
   }
 
@@ -32,6 +33,7 @@ export class LlamaChat {
   }
 
   async prompt(message: string): Promise<string> {
+    if (this.state == null) throw new Error('Llm model is not initialized')
     let { session } = await this.state
     if (session !== null) {
       return session.prompt(message, { maxParallelFunctionCalls: 1 })
@@ -40,14 +42,14 @@ export class LlamaChat {
     }
   }
 
-  private async innit(): Promise<LlamaState> {
+  private async innit(modelPath:string = defaultModelPath): Promise<LlamaState> {
     const llama = await getLlama()
 
     const model_path = path.join(
       __dirname,
       '../../',
       '/resources/models',
-      'Meta-Llama-3.1-8B-Instruct.Q8_0.gguf'
+      modelPath
     )
 
     const model = await llama.loadModel({

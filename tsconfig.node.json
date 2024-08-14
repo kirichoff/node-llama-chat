@@ -1,6 +1,6 @@
 {
   "extends": "@electron-toolkit/tsconfig/tsconfig.node.json",
-  "include": ["src/**/*.ts", "src/llama/LlamaMessageType.ts" ,"electron.vite.config.*", "src/main/**/*", "src/preload/**/*"],
+  "include": ["src/**/*.ts", "src/renderer/src/*.ts", "src/llama/LlamaMessageType.ts" ,"electron.vite.config.*", "src/main/**/*", "src/preload/**/*"],
   "compilerOptions": {
     "composite": true,
     "types": ["electron-vite/node"]

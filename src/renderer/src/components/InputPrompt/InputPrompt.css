@@ -1,0 +1,153 @@
+/* General styling for the input prompt container */
+.input-prompt {
+  display: flex;
+  align-items: center;
+  background-color: #1c1c1e;
+  border-radius: 25px;
+  padding: 10px;
+  width: 100vw;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  margin-bottom: 20px; /* Ensure consistent spacing */
+}
+
+/* Common styles for icons and submit buttons */
+.input-icon,
+.input-submit {
+  background: none;
+  border: none;
+  color: #8e8e93;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.input-submit {
+  background-color: #8e8e938a;
+}
+
+/* SVG size within icons */
+.input-icon svg,
+.input-submit svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Textarea within the input prompt */
+.input-textarea {
+  flex-grow: 1;
+  /* background-color: #2c2c2e; */
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.5;
+  resize: none;
+  overflow-y: hidden;
+  margin: 0 10px;
+  background: linear-gradient(90deg, rgba(70,70,73,1) 0%, rgba(67,67,71,1) 35%, rgba(85,85,89,1) 58%);
+  color: #ffffff;
+  background-size: 200% 200%;
+  animation: gradientAnimation 4s ease infinite;
+}
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+.input-textarea::placeholder {
+  color: #8e8e93;
+}
+
+/* Disabled state for icons and submit buttons */
+.input-icon:disabled,
+.input-submit:disabled {
+  color: #555;
+  cursor: not-allowed;
+}
+
+/* General button styling */
+button {
+  padding: 10px 15px;
+  border-radius: 50%;
+  border: none;
+  background: #3e3e42;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #000; /* Change text color on hover for better contrast */
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+button:disabled .arrow {
+  opacity: 0;
+}
+
+/* Loading spinner styling */
+.loading-spinner {
+  display: none;
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  border-top: 5px solid transparent;
+  animation: spin 1s linear infinite;
+}
+
+button:disabled .loading-spinner {
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Ensure text is not obscured by spinner */
+.button-text {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00000098;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #333;
+  border-radius: 6px;
+}
+
+

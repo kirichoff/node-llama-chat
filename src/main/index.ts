@@ -10,6 +10,7 @@ function createWindow(): void {
     width: 900,
     height: 670,
     show: false,
+    title: "Chat",
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
@@ -51,7 +52,7 @@ app.whenReady().then(() => {
   })
 
   // Init Chat
-  llamaChatService.initIPCHandlers();
+  llamaChatService.innitLlama(process.env["MODEL_FILE_NAME"]);
 
   createWindow()
 
