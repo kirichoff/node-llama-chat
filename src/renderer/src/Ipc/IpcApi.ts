@@ -1,9 +1,16 @@
+import { electronAPI } from '@electron-toolkit/preload';
 import { LlamaMessageType } from './../../../llama/LlamaMessageType';
+
+declare global {
+  interface Window {
+    electron: typeof electronAPI;
+  }
+}
 
 export class LlamaChatIpc {
 
-  window: any;
-  constructor(window:any) {
+  window: Window;
+  constructor(window:Window) {
     this.window = window;
   }
 

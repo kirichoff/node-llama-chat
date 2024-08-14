@@ -7,14 +7,17 @@ export interface IMessageHistoryItem {
   author: Authors
 }
 
+type MessageHistoryItemProps = {
+  author: Authors
+} & React.PropsWithChildren<{}>
+
 export default function MessageHistoryItem({
   children,
   author
-}: {
-  children: React.ReactNode
-  author: Authors
-}): React.ReactElement {
-  return <li className={authorsClassMap[author]}>
-      <div >{children}</div>
+}: MessageHistoryItemProps): React.ReactElement {
+  return (
+    <li className={authorsClassMap[author]}>
+      <div>{children}</div>
     </li>
+  )
 }

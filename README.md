@@ -1,10 +1,26 @@
-# file-sort-v2
+# node-llama-cpp chat
 
-An Electron application with React and TypeScript
+Simple chat with node llama
+Meta-Llama-3.1-8B-Instruct.Q8_0 model by default
 
-## Recommended IDE Setup
+# About
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+research of [node-llama-cpp](https://github.com/withcatai/node-llama-cpp)
+adapter for [llama.cpp](https://github.com/ggerganov/llama.cpp)
+([c# adapter](https://github.com/SciSharp/LLamaSharp))
+
+also check **node-llama-cpp** template
+
+```bash
+$ npm install node-llama-cpp@beta
+```
+
+```bash
+$ npm create --yes node-llama-cpp@beta
+```
+
+[beta docks](https://github.com/withcatai/node-llama-cpp/pull/105)
+
 
 ## Project Setup
 
@@ -12,6 +28,12 @@ An Electron application with React and TypeScript
 
 ```bash
 $ npm install
+```
+
+to pull model and deps
+
+```bash
+$ npm run postinstall
 ```
 
 ### Development
